@@ -22,7 +22,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-info">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="/"><img src="{{ asset('assets/img/logo.png') }}" alt=""
-                width="40" height="40"> Admin</a>
+                width="40" height="40"> {{ Auth::user()->name }}</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <i class='bx bx-menu'></i>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Login sebagai</div>
-                    {{-- {{ Auth::user()->name }} --}}
+                    {{ Auth::user()->name }}
                 </div>
             </nav>
         </div>
