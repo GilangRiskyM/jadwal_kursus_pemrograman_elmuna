@@ -22,8 +22,6 @@ class EditJadwalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_siswa' => 'required',
-            'nama_program' => 'required',
             'materi' => 'required',
             'status' => 'required'
         ];
@@ -32,8 +30,6 @@ class EditJadwalRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama_siswa.required' => 'Siswa wajib dipilih!',
-            'nama_program.required' => 'Program Kursus wajib dipilih!',
             'materi.required' => 'Materi wajib diisi!',
             'status.required' => 'Status wajib dipilih!',
         ];

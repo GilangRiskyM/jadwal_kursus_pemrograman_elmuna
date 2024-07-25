@@ -23,11 +23,13 @@
                     @csrf
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Nama Siswa</span>
-                        <input type="text" class="form-control" value="{{ $data->nama_siswa }}" readonly>
+                        <input type="text" class="form-control" name="nama_siswa" value="{{ $data->nama_siswa }}"
+                            readonly>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Program Kursus</span>
-                        <input type="text" class="form-control" value="{{ $data->nama_program }}" readonly>
+                        <input type="text" class="form-control" name="nama_program" value="{{ $data->nama_program }}"
+                            readonly>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Materi</span>

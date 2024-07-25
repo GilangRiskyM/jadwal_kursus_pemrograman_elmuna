@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProgramController;
@@ -17,29 +18,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticating']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::get('/siswa_tambah', [SiswaController::class, 'create']);
-Route::post('/tambah-siswa', [SiswaController::class, 'store']);
-Route::get('/siswa/jadwal/{nama_siswa}', [JadwalController::class, 'show']);
-Route::get('/siswa_edit/{id}', [SiswaController::class, 'edit']);
-Route::put('/update-siswa/{id}', [SiswaController::class, 'update']);
-Route::get('/siswa_hapus/{id}', [SiswaController::class, 'delete']);
-Route::delete('/destroy-siswa/{id}', [SiswaController::class, 'destroy']);
+Route::middleware('auth')->group(function () {
 
-Route::get('/program', [ProgramController::class, 'index']);
-Route::get('/program_tambah', [ProgramController::class, 'create']);
-Route::post('/tambah-program', [ProgramController::class, 'store']);
-Route::get('/program_edit/{id}', [ProgramController::class, 'edit']);
-Route::put('/update-program/{id}', [ProgramController::class, 'update']);
-Route::get('/program_hapus/{id}', [ProgramController::class, 'delete']);
-Route::delete('/destroy-program/{id}', [ProgramController::class, 'destroy']);
+    Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/jadwal', [JadwalController::class, 'index']);
-Route::get('/jadwal_tambah', [JadwalController::class, 'create']);
-Route::post('/tambah-jadwal', [JadwalController::class, 'store']);
-Route::get('/jadwal_edit/{id}', [JadwalController::class, 'edit']);
-Route::put('/update-jadwal/{id}', [JadwalController::class, 'update']);
-Route::get('/jadwal_hapus/{id}', [JadwalController::class, 'delete']);
-Route::delete('/destroy-jadwal/{id}', [JadwalController::class, 'destroy']);
+    Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/siswa_tambah', [SiswaController::class, 'create']);
+    Route::post('/tambah-siswa', [SiswaController::class, 'store']);
+    Route::get('/siswa/jadwal/{nama_siswa}', [JadwalController::class, 'show']);
+    Route::get('/siswa_edit/{id}', [SiswaController::class, 'edit']);
+    Route::put('/update-siswa/{id}', [SiswaController::class, 'update']);
+    Route::get('/siswa_hapus/{id}', [SiswaController::class, 'delete']);
+    Route::delete('/destroy-siswa/{id}', [SiswaController::class, 'destroy']);
+
+    Route::get('/program', [ProgramController::class, 'index']);
+    Route::get('/program_tambah', [ProgramController::class, 'create']);
+    Route::post('/tambah-program', [ProgramController::class, 'store']);
+    Route::get('/program_edit/{id}', [ProgramController::class, 'edit']);
+    Route::put('/update-program/{id}', [ProgramController::class, 'update']);
+    Route::get('/program_hapus/{id}', [ProgramController::class, 'delete']);
+    Route::delete('/destroy-program/{id}', [ProgramController::class, 'destroy']);
+
+    Route::get('/jadwal', [JadwalController::class, 'index']);
+    Route::get('/jadwal_tambah', [JadwalController::class, 'create']);
+    Route::post('/tambah-jadwal', [JadwalController::class, 'store']);
+    Route::get('/jadwal_edit/{id}', [JadwalController::class, 'edit']);
+    Route::put('/update-jadwal/{id}', [JadwalController::class, 'update']);
+    Route::get('/jadwal_hapus/{id}', [JadwalController::class, 'delete']);
+    Route::delete('/destroy-jadwal/{id}', [JadwalController::class, 'destroy']);
+});
