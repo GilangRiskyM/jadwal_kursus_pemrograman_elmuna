@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditJadwalRequest extends FormRequest
+class EditJadwalSiswaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,6 @@ class EditJadwalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_siswa' => 'required',
-            'nama_program' => 'required',
             'materi' => 'required',
             'status' => 'required'
         ];
@@ -32,10 +30,8 @@ class EditJadwalRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama_siswa.required' => 'Nama Siswa wajib diisi!!',
-            'nama_program.required' => 'Program wajib diisi!!',
-            'materi.required' => 'Materi wajib diisi!!',
-            'status.required' => 'Status wajib dipilih!!'
+            'materi.required' => 'Materi wajib diisi!',
+            'status.required' => 'Status wajib dipilih!',
         ];
     }
 }

@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-1">
                         <center>
-                            <a href="/program" class="btn btn-secondary mx-5">Kembali</a>
+                            <a href="/program" class="btn btn-secondary mx-5 mb-2">Kembali</a>
                             <button class="btn btn-success mx-5" type="submit">Simpan</button>
                         </center>
                     </div>

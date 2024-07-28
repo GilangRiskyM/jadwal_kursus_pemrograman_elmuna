@@ -53,6 +53,9 @@
                                 @endif
                                 <td>
                                     <center>
+                                        <a href="/jadwal/edit/{{ $data->id }}" class="btn btn-warning mx-2 my-2 mb-2">
+                                            <i class="bx bxs-edit"></i> Edit
+                                        </a>
                                         <a href="/jadwal_hapus/{{ $data->id }}" class="btn btn-danger mx-2 my-2">
                                             <i class="bx bxs-trash"></i> Hapus
                                         </a>

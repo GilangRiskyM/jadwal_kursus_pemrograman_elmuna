@@ -29,9 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/siswa', [SiswaController::class, 'index']);
     Route::get('/siswa_tambah', [SiswaController::class, 'create']);
     Route::post('/tambah-siswa', [SiswaController::class, 'store']);
-    Route::get('/siswa/jadwal/{nama_siswa}', [JadwalController::class, 'show']);
+    Route::get('/siswa/jadwal/{nama_siswa}', [SiswaController::class, 'show']);
     Route::get('/siswa_edit/{id}', [SiswaController::class, 'edit']);
     Route::put('/update-siswa/{id}', [SiswaController::class, 'update']);
+    Route::get('/siswa/jadwal/edit/{id}', [SiswaController::class, 'editJadwal']);
+    Route::put('/siswa/update-jadwal/{id}', [SiswaController::class, 'updateJadwal']);
     Route::get('/siswa_hapus/{id}', [SiswaController::class, 'delete']);
     Route::delete('/destroy-siswa/{id}', [SiswaController::class, 'destroy']);
 
@@ -46,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jadwal', [JadwalController::class, 'index']);
     Route::get('/jadwal_tambah', [JadwalController::class, 'create']);
     Route::post('/tambah-jadwal', [JadwalController::class, 'store']);
-    Route::get('/jadwal_edit/{id}', [JadwalController::class, 'edit']);
+    Route::get('/jadwal/edit/{id}', [JadwalController::class, 'edit']);
     Route::put('/update-jadwal/{id}', [JadwalController::class, 'update']);
     Route::get('/jadwal_hapus/{id}', [JadwalController::class, 'delete']);
     Route::delete('/destroy-jadwal/{id}', [JadwalController::class, 'destroy']);

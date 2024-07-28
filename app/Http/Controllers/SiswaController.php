@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditSiswaRequest;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\TambahSiswaRequest;
+use App\Http\Requests\EditJadwalSiswaRequest;
 
 class SiswaController extends Controller
 {
@@ -55,6 +57,40 @@ class SiswaController extends Controller
         }
 
         return redirect('/siswa');
+    }
+
+    function show($nama_siswa)
+    {
+        $siswa = Jadwal::where('nama_siswa', $nama_siswa)
+            ->firstOrFail();
+        $data = Jadwal::where('nama_siswa', $nama_siswa)
+            ->get();
+
+        return view('siswa.jadwal', [
+            'siswa' => $siswa,
+            'data' => $data
+        ]);
+    }
+
+    function editJadwal($id)
+    {
+
+        $sql = Jadwal::findOrFail($id);
+        // dd($sql);
+
+        return view('siswa.edit_jadwal', ['data' => $sql]);
+    }
+
+    function updateJadwal(EditJadwalSiswaRequest $request, $id)
+    {
+        $sql = Jadwal::findOrFail($id);
+        $update = $sql->update($request->all());
+        if ($update) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Edit Jadwal Kursus Berhasil!');
+        }
+
+        return redirect('/siswa/jadwal/' . $request->nama_siswa);
     }
 
     function delete($id)

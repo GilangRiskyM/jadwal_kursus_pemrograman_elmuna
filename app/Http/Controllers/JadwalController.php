@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EditJadwalRequest;
-use App\Http\Requests\TambahJadwalRequest;
+use App\Models\Siswa;
 use App\Models\Jadwal;
 use App\Models\Program;
-use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\TambahJadwalRequest;
+use App\Http\Requests\EditJadwalSiswaRequest;
 
 class JadwalController extends Controller
 {
@@ -51,37 +52,32 @@ class JadwalController extends Controller
         return redirect('/jadwal');
     }
 
-    function show($nama_siswa)
-    {
-        $siswa = Jadwal::where('nama_siswa', $nama_siswa)
-            ->firstOrFail();
-        $data = Jadwal::where('nama_siswa', $nama_siswa)
-            ->get();
-
-        return view('siswa.jadwal', [
-            'siswa' => $siswa,
-            'data' => $data
-        ]);
-    }
-
     function edit($id)
     {
         $sql = Jadwal::findOrFail($id);
+        $siswa = Siswa::get();
+        $program = Program::get();
 
-        return view('jadwal.edit', ['data' => $sql]);
+        return view('jadwal.edit', [
+            'data' => $sql,
+            'siswa' => $siswa,
+            'program' => $program
+        ]);
     }
 
     function update(EditJadwalRequest $request, $id)
     {
         $sql = Jadwal::findOrFail($id);
         $update = $sql->update($request->all());
-        if ($update) {
+        if ($sql) {
             Session::flash('status', 'success');
-            Session::flash('message', 'Edit Jadwal Kursus Berhasil!');
+            Session::flash('message', 'Edit Jadwal Berhasil!!!');
         }
 
-        return redirect('/siswa/jadwal/' . $request->id_siswa);
+        return redirect('/jadwal?cari=' . $request->nama_siswa);
     }
+
+
 
     function delete($id)
     {

@@ -1,11 +1,11 @@
 @extends('layout.main')
-@section('title', 'Edit Jadwal')
+@section('title', 'Edit Jadwal Siswa')
 @section('content')
     <div class="d-flex justify-content-center">
         <div class="card my-4" style="width: 500px;">
             <div class="card-header">
                 <center>
-                    <h3>Form Edit Jadwal</h3>
+                    <h3>Form Edit Jadwal Siswa</h3>
                 </center>
             </div>
             <div class="card-body">
@@ -18,26 +18,18 @@
                         </ul>
                     </div>
                 @endif
-                <form action="/update-jadwal/{{ $data->id }}" method="post">
+                <form action="/siswa/update-jadwal/{{ $data->id }}" method="post">
                     @method('PUT')
                     @csrf
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Nama Siswa</span>
-                        <select name="nama_siswa" id="" class="form-select select2">
-                            <option value="{{ $data->nama_siswa }}">{{ $data->nama_siswa }}</option>
-                            @foreach ($siswa as $item)
-                                <option value="{{ $item->nama }}">{{ $item->nama }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" name="nama_siswa" value="{{ $data->nama_siswa }}"
+                            readonly>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Program Kursus</span>
-                        <select name="nama_program" id="" class="form-select select2">
-                            <option value="{{ $data->nama_program }}">{{ $data->nama_program }}</option>
-                            @foreach ($program as $item)
-                                <option value="{{ $item->program }}">{{ $item->program }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" name="nama_program" value="{{ $data->nama_program }}"
+                            readonly>
                     </div>
                     <div class="input-group mb-1">
                         <span class="input-group-text" style="width: 170px;">Materi</span>
@@ -61,12 +53,3 @@
         </div>
     </div>
 @endsection
-@push('js')
-    <script>
-        $(document).ready(function() {
-            $(".select2").select2({
-                theme: "bootstrap-5",
-            });
-        });
-    </script>
-@endpush

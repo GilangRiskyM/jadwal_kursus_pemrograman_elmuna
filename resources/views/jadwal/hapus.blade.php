@@ -41,7 +41,7 @@
                     <form action="/destroy-jadwal/{{ $data->id }}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <a href="/jadwal" class="btn btn-secondary mx-3">Kembali</a>
+                        <a href="/jadwal" class="btn btn-secondary mx-3 mb-2">Kembali</a>
                         <button class="btn btn-danger mx-3" type="submit">Hapus</button>
                     </form>
                 </div>

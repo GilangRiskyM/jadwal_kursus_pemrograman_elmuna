@@ -46,7 +46,7 @@
                                 @endif
                                 <td>
                                     <center>
-                                        <a href="/jadwal_edit/{{ $item->id }}" class="btn btn-warning mx-2 my-2">
+                                        <a href="/siswa/jadwal/edit/{{ $item->id }}" class="btn btn-warning mx-2 my-2">
                                             <i class="bx bxs-edit"></i> Edit
                                         </a>
                                     </center>

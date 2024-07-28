@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive align-items-center">
                 <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -43,7 +43,7 @@
                                 <td>{{ $data->nama }}</td>
                                 <td>
                                     <center>
-                                        <a href="/siswa/jadwal/{{ $data->nama }}" class="btn btn-info">
+                                        <a href="/siswa/jadwal/{{ $data->nama }}" class="btn btn-info my-2">
                                             <i class='bx bxs-calendar'></i> Jadwal
                                         </a>
                                         <a href="/siswa_edit/{{ $data->id }}" class="btn btn-warning mx-2 my-2">
