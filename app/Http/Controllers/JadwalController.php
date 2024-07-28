@@ -74,7 +74,7 @@ class JadwalController extends Controller
             Session::flash('message', 'Edit Jadwal Berhasil!!!');
         }
 
-        return redirect('/jadwal?cari=' . $request->nama_siswa);
+        return redirect('/jadwal');
     }
 
 
