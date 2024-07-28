@@ -54,7 +54,7 @@
                     <div class="mb-1">
                         <center>
                             <a href="/jadwal" class="btn btn-secondary mb-y">Kembali</a>
-                            <a href="/jadwal_tambah" class="btn btn-danger mx-5 mb-y">Batal</a>
+                            <a href="/jadwal_tambah" class="btn btn-danger mb-y">Batal</a>
                             <button class="btn btn-success my-2" type="submit">Simpan</button>
                         </center>
                     </div>
